@@ -4,7 +4,7 @@
 		function option_default($option) {
 			switch($option) {
 				case 'demo_ad':
-					return 'This is a demo ad.';
+					return 'This is a demo AD by In List Ads Plugin.';
 				case 'inlist_ads_questions':
 				    return 5;
 				default:
@@ -26,6 +26,7 @@
 			if (qa_clicked('inlist_ads_save')) {
 				
 				
+				
 					qa_opt('inlist_ads_enable',(bool)qa_post_text('inlist_ads_enable'));
 					qa_opt('inlist_ads_credit',(bool)qa_post_text('inlist_ads_credit'));
 					qa_opt('inlist_ads_pages_all',(bool)qa_post_text('inlist_ads_pages_all'));
@@ -34,9 +35,16 @@
 					qa_opt('inlist_ads_pages_questions',(bool)qa_post_text('inlist_ads_pages_questions'));
 					qa_opt('inlist_ads_pages_hot',(bool)qa_post_text('inlist_ads_pages_hot'));
 					qa_opt('inlist_ads_pages_unanswered',(bool)qa_post_text('inlist_ads_pages_unanswered'));
+					qa_opt('inlist_ads_pages_updates',(bool)qa_post_text('inlist_ads_pages_updates'));
 					qa_opt('inlist_ads_pages_tag',(bool)qa_post_text('inlist_ads_pages_tag'));
+					if (!empty(qa_post_text('inlist_ads_questions')) || strlen(qa_post_text('inlist_ads_questions')) || !qa_post_text('inlist_ads_questions') == 0) {
 					qa_opt('inlist_ads_questions',(int)qa_post_text('inlist_ads_questions'));
+					}
+					else {$error=1;}
+					if (!empty(qa_post_text('inlist_ads_html')) || strlen(qa_post_text('inlist_ads_html'))) {
 					qa_opt('inlist_ads_html',qa_post_text('inlist_ads_html'));
+					}
+					else {$error=1;}
 					
 					
 					$ok = 'Settings Saved.';
@@ -101,18 +109,28 @@
 				
 			);
 			$fields[] = array(
+				'label' => 'Show ads on My Updates page.',
+				'tags' => 'NAME="inlist_ads_pages_updates"',
+				'value' => qa_opt('inlist_ads_pages_updates'),
+				'type' => 'checkbox',
+				
+			);
+			$fields[] = array(
 				'label' => 'Show ads on Tag page.',
 				'tags' => 'NAME="inlist_ads_pages_tag"',
 				'value' => qa_opt('inlist_ads_pages_tag'),
 				'type' => 'checkbox',
 				
 			);
+			
 			$fields[] = array(
 				'label' => 'Ad after questions',
 				'tags' => 'NAME="inlist_ads_questions"',
 				'value' => qa_opt('inlist_ads_questions'),
 				'type' => 'text',
 				'note' => 'After how many questions the ads will be shown in the list.',
+				'error' => qa_clicked('inlist_ads_save') ? empty(qa_post_text('inlist_ads_questions')) || !strlen(qa_post_text('inlist_ads_questions')) || qa_post_text('inlist_ads_questions') == 0 ? 'This field cannot be empty or zero.' : '' : '',
+				
 			);
 
 			$fields[] = array(
@@ -122,6 +140,7 @@
 				'type' => 'textarea',
 				'rows' => '',
 				'note' => 'The HTML code of the ad.',
+				'error' => qa_clicked('inlist_ads_save') ? empty(qa_post_text('inlist_ads_html')) || !strlen(qa_post_text('inlist_ads_html')) ? 'Ads cannot be empty.' : '' : '',
 			);
 			
 		  
@@ -136,7 +155,7 @@
 					array(
 						'label' => 'Save',
 						'tags' => 'NAME="inlist_ads_save"',
-						'note' => 'Powered by Fazley Sabbir',
+						'note' => 'Developed by <a href="https://www.facebook.com/profile.php?id=100013518669051">Fazley Sabbir</a>',
 					)
 				),
 			);
