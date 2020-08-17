@@ -4,8 +4,8 @@
         Plugin Name: FS In List Ads
         Plugin URI: https://github.com/FazleySabbir/FS-In-List-Ads/
         Plugin Description: This plugin will give you a opportunity to show ads inside question list.
-        Plugin Version: 1.3
-        Plugin Date: 2020-07-31
+        Plugin Version: 1.4
+        Plugin Date: 2020-08-16
         Plugin Author: Fazley Sabbir
         Plugin Author URI: https://www.facebook.com/fazleysabbir.walker         
         Plugin License: GPLv2                           

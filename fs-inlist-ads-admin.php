@@ -41,6 +41,7 @@
 					qa_opt('inlist_ads_questions',(int)qa_post_text('inlist_ads_questions'));
 					}
 					else {$error=1;}
+					qa_opt('inlist_ads_category',qa_post_text('inlist_ads_category'));
 					if (!empty(qa_post_text('inlist_ads_html')) || strlen(qa_post_text('inlist_ads_html'))) {
 					qa_opt('inlist_ads_html',qa_post_text('inlist_ads_html'));
 					}
@@ -132,7 +133,14 @@
 				'error' => qa_clicked('inlist_ads_save') ? empty(qa_post_text('inlist_ads_questions')) || !strlen(qa_post_text('inlist_ads_questions')) || qa_post_text('inlist_ads_questions') == 0 ? 'This field cannot be empty or zero.' : '' : '',
 				
 			);
-
+            $fields[] = array(
+				'label' => 'The slugs of those categories you want not to show ads on.',
+				'tags' => 'NAME="inlist_ads_category"',
+				'value' => qa_opt('inlist_ads_category'),
+				'type' => 'textarea',
+				'rows' => '',
+				'note' => 'Provide the slugs of those categories, you want not to show ads on those pages.Please make sure that the slugs are coma(,) separated.Like: slug1,slug2,slug3',
+			);
 			$fields[] = array(
 				'label' => 'HTML Adcode',
 				'tags' => 'NAME="inlist_ads_html"',
@@ -155,7 +163,7 @@
 					array(
 						'label' => 'Save',
 						'tags' => 'NAME="inlist_ads_save"',
-						'note' => 'Developed by <a href="https://www.facebook.com/profile.php?id=100013518669051">Fazley Sabbir</a>',
+						'note' => 'Developed by <a href="https://www.facebook.com/fazleysabbir.walker">Fazley Sabbir</a>',
 					)
 				),
 			);

@@ -17,6 +17,16 @@
 			$this->ilastatus=true;
 				}
 			}
+			
+		if (qa_request_part(0) == 'questions' && !empty(qa_request_part(1)))
+		{
+           $slug=trim(qa_request_part(1));
+           $catslugs=explode(',',str_replace(' ','',trim(qa_opt('inlist_ads_category'))));
+           if (in_array($slug,$catslugs)) {
+           	$this->ilastatus=false;
+         }
+         
+		
 		if (qa_opt('inlist_ads_enable')) {
 		if ($this->ilastatus) {
 		if (($this->sabbir%qa_opt('inlist_ads_questions')) == 0) {
