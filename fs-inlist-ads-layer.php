@@ -24,6 +24,7 @@
            $catslugs=explode(',',str_replace(' ','',trim(qa_opt('inlist_ads_category'))));
            if (in_array($slug,$catslugs)) {
            	$this->ilastatus=false;
+           }
          }
          
 		
@@ -34,7 +35,7 @@
 		if (qa_opt('inlist_ads_credit')) {
 		$this->output('<i><small>Ads by '.qa_html(qa_opt('site_title')).'</small></i><br/>');
 		}
-		$this->output(qa_html(qa_opt('inlist_ads_html')));
+		$this->output(qa_opt('inlist_ads_html'));
 		$this->output('</div> <!-- END qa-q-list-item -->', '');
 		}
 		}
