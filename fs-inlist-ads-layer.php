@@ -31,12 +31,12 @@
 		if (qa_opt('inlist_ads_enable')) {
 		if ($this->ilastatus) {
 		if (($this->sabbir%qa_opt('inlist_ads_questions')) == 0) {
-		$this->output('<div class="qa-q-list-item' . rtrim(' ' . @$q_item['classes']) . '" ' . @$q_item['tags'] . '>');
+		$this->output('<div class="qa-q-in-list-ad' . rtrim(' ' . @$q_item['classes']) . '" ' . @$q_item['tags'] . '>');
 		if (qa_opt('inlist_ads_credit')) {
 		$this->output('<i><small>Ads by '.qa_html(qa_opt('site_title')).'</small></i><br/>');
 		}
 		$this->output(qa_opt('inlist_ads_html'));
-		$this->output('</div> <!-- END qa-q-list-item -->', '');
+		$this->output('</div> <!-- END qa-q-in-list-ad -->', '');
 		}
 		}
 		}
